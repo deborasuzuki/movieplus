@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "movieplus"
+    }
+  },
+  "defaultProject": "movieplus",
+  "cli": {
+    "analytics": "bce3acf2-4486-4349-9424-104dc1fffb52"
+  }
 }
