@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { MovieResults, MovieResultsInfo } from '../../models/movieplus.model';
 import { MovieplusService } from '../../services/movieplus.service';
-import { NowPlaying, NowPlayingMovies } from '../../models/movieplus.model';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +10,11 @@ import { NowPlaying, NowPlayingMovies } from '../../models/movieplus.model';
 })
 export class HomeComponent implements OnInit {
   tab: string = 'now_playing';
-  results: NowPlaying;
-  movies: NowPlayingMovies[];
+  results: MovieResults;
+  movies: MovieResultsInfo[];
   erro: any;
 
-  searchMovie: string = '';
+  searchTerm: string = '';
 
   constructor(private movieService: MovieplusService) {}
 
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.tab = tab;
 
     this.movieService.getMovies(tab, page).subscribe(
-      (data: NowPlaying) => {
+      (data: MovieResults) => {
         this.results = data;
         this.movies = this.results.results;
         console.log('here', this.movies);
@@ -39,11 +40,10 @@ export class HomeComponent implements OnInit {
 
   getSearchMovies() {
     this.tab = 'search';
-    console.log('search', this.searchMovie);
 
-    if (this.searchMovie) {
-      this.movieService.searchMovie(this.searchMovie).subscribe(
-        (data: NowPlaying) => {
+    if (this.searchTerm) {
+      this.movieService.searchMovie(this.searchTerm).subscribe(
+        (data: MovieResults) => {
           this.results = data;
           this.movies = this.results.results;
           console.log('here', this.movies);

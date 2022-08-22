@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieplusService } from '../../services/movieplus.service';
-import { NowPlaying, NowPlayingMovies } from '../../models/movieplus.model';
+
+import { MovieResultsInfo } from '../../models/movieplus.model';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,10 +8,10 @@ import { NowPlaying, NowPlayingMovies } from '../../models/movieplus.model';
   styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movies: NowPlayingMovies[];
+  @Input() movies: MovieResultsInfo[];
   imageUrl: string = 'https://image.tmdb.org/t/p/original';
 
-  constructor(private movieService: MovieplusService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

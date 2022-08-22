@@ -1,17 +1,17 @@
-export interface NowPlaying {
-  dates: NowPlayingDates;
+export interface MovieResults {
+  dates: MovieResultsDates;
   page: number;
-  results: NowPlayingMovies[];
+  results: MovieResultsInfo[];
   total_pages: number;
   total_results: number;
 }
 
-export interface NowPlayingDates {
+export interface MovieResultsDates {
   maximun: string;
   minimun: string;
 }
 
-export interface NowPlayingMovies {
+export interface MovieResultsInfo {
   adult: false;
   backdrop_path: string;
   genre_ids: number[];

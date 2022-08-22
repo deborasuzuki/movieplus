@@ -24,6 +24,7 @@
       justify-content: start;
       flex: 1;
       padding-left: 5px;
+
       h4 {
         line-height: 20px;
       }
@@ -49,6 +50,18 @@
         font-size: 14px;
         font-weight: 700;
         color: white;
+      }
+
+      .high {
+        color: rgb(44, 169, 44);
+      }
+
+      .medium {
+        color: rgb(227, 202, 41);
+      }
+
+      .low {
+        color: rgb(213, 49, 20);
       }
     }
   }
