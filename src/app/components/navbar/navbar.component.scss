@@ -1,0 +1,25 @@
+.navbar {
+  background-color: #062541;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    height: 50px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+
+    .material-icons {
+      color: #fff;
+      font-size: 30px;
+    }
+
+    p {
+      margin-left: 15px;
+      color: #fff;
+      font-size: 30px;
+    }
+  }
+}

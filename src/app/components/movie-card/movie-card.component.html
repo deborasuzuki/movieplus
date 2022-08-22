@@ -1,11 +1,11 @@
 <div class="movie-card" *ngFor="let movie of movies">
   <figure class="movie-card__image">
-    <img [attr.src]="url + movie.poster_path" alt="Minios" />
+    <img [attr.src]="imageUrl + movie.poster_path" alt="Minios" />
   </figure>
   <div class="movie-card__info">
     <div class="movie-card__info__left">
       <h4>{{ movie.title }}</h4>
-      <p>{{ movie.release_date | date: "yyyy" }}</p>
+      <p>Lançamento: {{ movie.release_date | date: "dd/MM/yyyy" }}</p>
     </div>
     <div class="movie-card__info__right">
       <p>{{ movie.vote_average }}</p>

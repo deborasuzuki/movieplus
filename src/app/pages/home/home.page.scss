@@ -1,0 +1,39 @@
+.home {
+  &__main {
+    padding: 20px 10px;
+
+    &__tabs {
+      width: 100%;
+      margin-bottom: 30px;
+
+      display: flex;
+      justify-content: center;
+
+      a {
+        cursor: pointer;
+        margin: 10px;
+
+        &:hover {
+          border-bottom: 2px solid #51cbcf;
+        }
+      }
+
+      .active {
+        border-bottom: 2px solid #143e62;
+        font-weight: 700;
+      }
+    }
+
+    &__content {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  app-movie-card {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

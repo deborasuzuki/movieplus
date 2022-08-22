@@ -1,0 +1,25 @@
+<div class="home">
+  <app-navbar></app-navbar>
+  <!-- <app-movie-card></app-movie-card> -->
+  <main class="home__main">
+    <div class="home__main__tabs">
+      <a
+        [class.active]="tab == 'now_playing'"
+        (click)="getMovies('now_playing', 1)"
+        >Assistir agora</a
+      >
+      <a [class.active]="tab == 'upcoming'" (click)="getMovies('upcoming', 1)"
+        >Próximos lançamentos</a
+      >
+    </div>
+
+    <div class="home__main__content" [ngSwitch]="tab">
+      <section *ngSwitchCase="'now_playing'">
+        <app-movie-card [movies]="movies"></app-movie-card>
+      </section>
+      <section *ngSwitchCase="'upcoming'">
+        <app-movie-card [movies]="movies"></app-movie-card>
+      </section>
+    </div>
+  </main>
+</div>
