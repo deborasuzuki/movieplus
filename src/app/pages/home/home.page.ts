@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   movies: NowPlayingMovies[];
   erro: any;
 
+  searchMovie: string = '';
+
   constructor(private movieService: MovieplusService) {}
 
   ngOnInit() {
@@ -33,5 +35,24 @@ export class HomeComponent implements OnInit {
         console.error('Error: ', error);
       }
     );
+  }
+
+  getSearchMovies() {
+    this.tab = 'search';
+    console.log('search', this.searchMovie);
+
+    if (this.searchMovie) {
+      this.movieService.searchMovie(this.searchMovie).subscribe(
+        (data: NowPlaying) => {
+          this.results = data;
+          this.movies = this.results.results;
+          console.log('here', this.movies);
+        },
+        (error) => {
+          this.erro = error;
+          console.error('Error: ', error);
+        }
+      );
+    }
   }
 }

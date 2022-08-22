@@ -13,9 +13,15 @@ export class MovieplusService {
   pageBase: string = '&page=';
   urlBase: string = 'https://api.themoviedb.org/3/movie/';
 
+  searchUrl: string = `https://api.themoviedb.org/3/search/movie${this.apiKey}&language=pt-BR&page=1&include_adult=false&query=`;
+
   public getMovies(tab: string, page: number): Observable<any> {
     return this.httpClient.get(
       this.urlBase + tab + this.apiKey + this.language + this.pageBase + page
     );
+  }
+
+  public searchMovie(search: string) {
+    return this.httpClient.get(this.searchUrl + search);
   }
 }
