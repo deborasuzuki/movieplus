@@ -9,7 +9,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.page';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.page';
-
+import { CastComponent } from './components/cast/cast.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +17,8 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.page'
     HomeComponent,
     NavbarComponent,
     MovieDetailsComponent,
+    AppComponent,
+    CastComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

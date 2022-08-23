@@ -30,4 +30,10 @@ export class MovieplusService {
       this.urlBase + movieId + this.apiKey + this.language
     );
   }
+
+  public getMovieCredits(movieId: number) {
+    return this.httpClient.get(
+      this.urlBase + movieId + '/credits' + this.apiKey + this.language
+    );
+  }
 }

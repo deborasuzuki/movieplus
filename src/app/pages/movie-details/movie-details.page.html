@@ -15,7 +15,7 @@
         </figure>
         <div class="details__head__info">
           <div class="details__head__info__title">
-            <h3 id="title">{{ movieDetails.title }}</h3>
+            <h1 id="title">{{ movieDetails.title }}</h1>
             <p>({{ movieDetails.release_date | date: "yyyy" }})</p>
           </div>
           <div class="details__head__info__genres">
@@ -38,6 +38,8 @@
         </div>
       </div>
     </section>
-    <section></section>
+    <section class="details__credits">
+      <app-cast [showCast]="showCast"></app-cast>
+    </section>
   </main>
 </div>

@@ -1,0 +1,33 @@
+.cast {
+  height: 350px;
+  margin: 30px;
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    height: 300px;
+    width: 150px;
+
+    box-shadow: 8px 13px 8px -4px #9a9a9a;
+    border-radius: 10px;
+
+    &__image {
+      img {
+        border-radius: 10px 10px 0 0;
+      }
+    }
+
+    &__content {
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 0 0 10px 10px;
+      font-size: 14px;
+
+      #name {
+        font-weight: 700;
+      }
+    }
+  }
+}

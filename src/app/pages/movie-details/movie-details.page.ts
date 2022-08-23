@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieplusService } from 'src/app/services/movieplus.service';
 
-import { MovieDetails, MovieDetailsGenres } from '../../models/movieplus.model';
+import {
+  MovieDetails,
+  MovieDetailsGenres,
+  MovieCredits,
+  MovieCreditsCast,
+} from '../../models/movieplus.model';
 
 @Component({
   selector: 'app-movie-details',
@@ -12,6 +17,9 @@ import { MovieDetails, MovieDetailsGenres } from '../../models/movieplus.model';
 export class MovieDetailsComponent implements OnInit {
   movieId: number;
   movieDetails: MovieDetails;
+  movieCredits: MovieCredits;
+  movieCast: MovieCreditsCast[];
+  showCast: MovieCreditsCast[];
   movieGenres: MovieDetailsGenres[];
   movieRuntime: string;
   erro: any;
@@ -29,6 +37,7 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getSelectMovieDetails(this.movieId);
+    this.getSelectMovieCredits(this.movieId);
   }
 
   getSelectMovieDetails(movieId: number) {
@@ -36,7 +45,7 @@ export class MovieDetailsComponent implements OnInit {
       (data: MovieDetails) => {
         this.movieDetails = data;
         this.movieGenres = data.genres;
-        console.log('Select movie details', this.movieDetails);
+        // console.log('Select movie details', this.movieDetails);
         this.formatRuntime();
       },
       (error) => {
@@ -46,11 +55,32 @@ export class MovieDetailsComponent implements OnInit {
     );
   }
 
+  getSelectMovieCredits(movieId: number) {
+    this.movieService.getMovieCredits(movieId).subscribe(
+      (data: MovieCredits) => {
+        this.movieCredits = data;
+        console.log('Select movie details', this.movieCredits);
+        this.filterCast();
+      },
+      (error) => {
+        this.erro = error;
+        console.error('Error: ', error);
+      }
+    );
+  }
+
+  filterCast() {
+    this.movieCast = this.movieCredits.cast.filter(
+      (item) => item.known_for_department == 'Acting'
+    );
+    const showCast = this.movieCast.slice(0, 8);
+    console.log('cast', showCast);
+  }
+
   formatRuntime() {
     const runtime = this.movieDetails.runtime;
     const hour = Math.floor(runtime / 60);
     const minutes = runtime % 60;
     this.movieRuntime = `${hour}h ${minutes}m`;
-    console.log('movie runtime', runtime);
   }
 }
