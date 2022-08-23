@@ -33,14 +33,25 @@
     }
 
     &__content {
-      height: 45px;
+      height: 75px;
       padding: 10px;
       background-color: #fff;
       border-radius: 0 0 10px 10px;
       font-size: 14px;
 
-      #name {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      #title {
+        height: 42px;
         font-weight: 700;
+      }
+
+      #average {
+        height: 21px;
+        width: 100%;
+        text-align: end;
       }
     }
   }

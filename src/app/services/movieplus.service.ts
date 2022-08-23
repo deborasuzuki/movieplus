@@ -36,4 +36,10 @@ export class MovieplusService {
       this.urlBase + movieId + '/credits' + this.apiKey + this.language
     );
   }
+
+  public getMovieRecommendations(movieId: number) {
+    return this.httpClient.get(
+      this.urlBase + movieId + '/recommendations' + this.apiKey + this.language
+    );
+  }
 }

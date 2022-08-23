@@ -38,8 +38,14 @@
         </div>
       </div>
     </section>
-    <section class="details__credits">
+    <section *ngIf="!loaderCredits" class="details__credits">
       <app-cast [showCast]="showCast"></app-cast>
+    </section>
+    <section *ngIf="!loaderRecommendations" class="details__credits">
+      <app-more-movies
+        [movieRecommendations]="movieRecommendations"
+        [title]="'Recomendações'"
+      ></app-more-movies>
     </section>
   </main>
 </div>

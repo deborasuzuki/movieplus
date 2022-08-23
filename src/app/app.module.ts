@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.page';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.page';
 import { CastComponent } from './components/cast/cast.component';
+import { MoreMoviesComponent } from './components/more-movies/more-movies.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { CastComponent } from './components/cast/cast.component';
     MovieDetailsComponent,
     AppComponent,
     CastComponent,
+    MoreMoviesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

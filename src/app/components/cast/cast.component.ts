@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MovieCreditsCast } from '../../models/movieplus.model';
+import { MovieCreditsCast } from 'src/app/models/movieplus.model';
 
 @Component({
   selector: 'app-cast',
@@ -13,7 +13,5 @@ export class CastComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    console.log('cast 2', this.showCast);
-  }
+  ngOnInit() {}
 }

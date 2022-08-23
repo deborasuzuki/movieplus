@@ -1,0 +1,18 @@
+<div class="cast">
+  <h3>{{ title }}</h3>
+  <div class="cast__content">
+    <div *ngFor="let movie of movieRecommendations" class="cast__card">
+      <figure class="cast__card__image">
+        <img
+          [attr.src]="imageUrl + movie.poster_path"
+          alt="{{ movie.title }}"
+        />
+      </figure>
+
+      <div class="cast__card__content">
+        <p id="title">{{ movie.title }}</p>
+        <p id="average">{{ movie.vote_average | number: "1.1-1" }}</p>
+      </div>
+    </div>
+  </div>
+</div>

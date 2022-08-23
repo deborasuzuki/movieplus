@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieplusService } from 'src/app/services/movieplus.service';
 
 import {
-  MovieDetails,
-  MovieDetailsGenres,
   MovieCredits,
   MovieCreditsCast,
+  MovieDetails,
+  MovieDetailsGenres,
+  MovieRecommendations,
+  MovieRecommendationsResults,
 } from '../../models/movieplus.model';
 
 @Component({
@@ -21,7 +23,10 @@ export class MovieDetailsComponent implements OnInit {
   movieCast: MovieCreditsCast[];
   showCast: MovieCreditsCast[];
   movieGenres: MovieDetailsGenres[];
+  movieRecommendations: MovieRecommendationsResults[];
   movieRuntime: string;
+  loaderCredits: boolean = true;
+  loaderRecommendations: boolean = true;
   erro: any;
 
   imageUrl: string = 'https://image.tmdb.org/t/p/original';
@@ -38,6 +43,7 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit() {
     this.getSelectMovieDetails(this.movieId);
     this.getSelectMovieCredits(this.movieId);
+    this.getRecommendations(this.movieId);
   }
 
   getSelectMovieDetails(movieId: number) {
@@ -59,8 +65,21 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovieCredits(movieId).subscribe(
       (data: MovieCredits) => {
         this.movieCredits = data;
-        console.log('Select movie details', this.movieCredits);
         this.filterCast();
+      },
+      (error) => {
+        this.erro = error;
+        console.error('Error: ', error);
+      }
+    );
+  }
+
+  getRecommendations(movieId: number) {
+    this.movieService.getMovieRecommendations(movieId).subscribe(
+      (data: MovieRecommendations) => {
+        const recomendations = data;
+        this.movieRecommendations = recomendations.results.slice(0, 10);
+        this.loaderRecommendations = false;
       },
       (error) => {
         this.erro = error;
@@ -73,8 +92,8 @@ export class MovieDetailsComponent implements OnInit {
     this.movieCast = this.movieCredits.cast.filter(
       (item) => item.known_for_department == 'Acting'
     );
-    const showCast = this.movieCast.slice(0, 8);
-    console.log('cast', showCast);
+    this.showCast = this.movieCast.slice(0, 8);
+    this.loaderCredits = false;
   }
 
   formatRuntime() {
