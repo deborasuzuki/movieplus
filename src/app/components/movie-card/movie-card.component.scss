@@ -3,6 +3,10 @@
   width: 220px;
   height: 380px;
 
+  &__content {
+    cursor: pointer;
+  }
+
   &__image {
     img {
       width: 220px;

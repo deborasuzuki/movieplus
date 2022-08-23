@@ -1,5 +1,43 @@
 <div class="details">
   <app-navbar></app-navbar>
   <!-- <app-movie-card></app-movie-card> -->
-  <main class="details__main"></main>
+  <main class="details__main">
+    <section
+      class="details__head"
+      [ngStyle]="{'background-image':' url(' + imageUrl + movieDetails.backdrop_path + ')'}"
+    >
+      <div class="details__head__content">
+        <figure class="details__head__image">
+          <img
+            [attr.src]="imageUrl + movieDetails.poster_path"
+            alt="{{ movieDetails.title }}"
+          />
+        </figure>
+        <div class="details__head__info">
+          <div class="details__head__info__title">
+            <h3 id="title">{{ movieDetails.title }}</h3>
+            <p>({{ movieDetails.release_date | date: "yyyy" }})</p>
+          </div>
+          <div class="details__head__info__genres">
+            <p id="date">
+              {{ movieDetails.release_date | date: "dd/MM/yyyy" }}
+            </p>
+            <p id="genres" *ngFor="let item of movieGenres">{{ item.name }}</p>
+          </div>
+          <div class="details__head__info__avarage">
+            <p id="avarage">{{ movieDetails.vote_average | number: '1.1-1'}}</p>
+            <p>{{ movieRuntime }}</p>
+          </div>
+          <div class="details__head__info__tagline">
+            <p>{{ movieDetails.tagline }}</p>
+          </div>
+          <div class="details__head__info__sinopse">
+            <p id="sinopse">Sinopse</p>
+            <p>{{ movieDetails.overview }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section></section>
+  </main>
 </div>

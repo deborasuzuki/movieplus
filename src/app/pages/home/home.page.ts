@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   private updateResults(data: MovieResults) {
     this.results = data;
     this.movies = this.results.results;
-    console.log('here', this.movies);
+    console.log('Movie Results', this.movies);
   }
 
   private updateError(error: any) {

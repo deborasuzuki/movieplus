@@ -1,26 +1,24 @@
-<div
-  class="movie-card"
-  *ngFor="let movie of movies"
-  (click)="selectMovie(movie.id)"
->
-  <figure class="movie-card__image">
-    <img [attr.src]="imageUrl + movie.poster_path" alt="{{ movie.title }}" />
-  </figure>
-  <div class="movie-card__info">
-    <div class="movie-card__info__left">
-      <h4>{{ movie.title }}</h4>
-      <p>Lançamento: {{ movie.release_date | date: "dd/MM/yyyy" }}</p>
-    </div>
-    <div class="movie-card__info__right">
-      <p
-        [ngClass]="{
-          high: movie.vote_average >= 8,
-          medium: movie.vote_average < 8 && movie.vote_average >= 5,
-          low: movie.vote_average < 5
-        }"
-      >
-        {{ movie.vote_average }}
-      </p>
+<div class="movie-card" *ngFor="let movie of movies">
+  <div class="movie-card__content" (click)="selectMovie(movie.id)">
+    <figure class="movie-card__image">
+      <img [attr.src]="imageUrl + movie.poster_path" alt="{{ movie.title }}" />
+    </figure>
+    <div class="movie-card__info">
+      <div class="movie-card__info__left">
+        <h4>{{ movie.title }}</h4>
+        <p>Lançamento: {{ movie.release_date | date: "dd/MM/yyyy" }}</p>
+      </div>
+      <div class="movie-card__info__right">
+        <p
+          [ngClass]="{
+            high: movie.vote_average >= 8,
+            medium: movie.vote_average < 8 && movie.vote_average >= 5,
+            low: movie.vote_average < 5
+          }"
+        >
+          {{ movie.vote_average }}
+        </p>
+      </div>
     </div>
   </div>
 </div>
