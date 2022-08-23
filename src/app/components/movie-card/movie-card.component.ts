@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MovieResultsInfo } from '../../models/movieplus.model';
 
@@ -9,9 +9,15 @@ import { MovieResultsInfo } from '../../models/movieplus.model';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movies: MovieResultsInfo[];
+  @Output() movieSelected: EventEmitter<number> = new EventEmitter();
+
   imageUrl: string = 'https://image.tmdb.org/t/p/original';
 
   constructor() {}
 
   ngOnInit() {}
+
+  selectMovie(movieId: number) {
+    this.movieSelected.emit(movieId);
+  }
 }

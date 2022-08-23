@@ -25,15 +25,12 @@
       </button>
     </div>
 
-    <div class="home__main__content" [ngSwitch]="tab">
-      <section *ngSwitchCase="'now_playing'">
-        <app-movie-card [movies]="movies"></app-movie-card>
-      </section>
-      <section *ngSwitchCase="'upcoming'">
-        <app-movie-card [movies]="movies"></app-movie-card>
-      </section>
-      <section *ngSwitchCase="'search'">
-        <app-movie-card [movies]="movies"></app-movie-card>
+    <div class="home__main__content">
+      <section>
+        <app-movie-card
+          [movies]="movies"
+          (movieSelected)="openMovieDetails($event)"
+        ></app-movie-card>
       </section>
     </div>
   </main>

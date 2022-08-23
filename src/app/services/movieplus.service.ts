@@ -24,4 +24,10 @@ export class MovieplusService {
   public searchMovie(search: string) {
     return this.httpClient.get(this.searchUrl + search);
   }
+
+  public getMovieDetails(movieId: number) {
+    return this.httpClient.get(
+      this.urlBase + movieId + this.apiKey + this.language
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MovieResults, MovieResultsInfo } from '../../models/movieplus.model';
 import { MovieplusService } from '../../services/movieplus.service';
@@ -16,43 +17,48 @@ export class HomeComponent implements OnInit {
 
   searchTerm: string = '';
 
-  constructor(private movieService: MovieplusService) {}
+  constructor(private movieService: MovieplusService, private router: Router) {}
 
   ngOnInit() {
     this.getMovies('now_playing', 1);
   }
 
   getMovies(tab: string, page: number) {
-    this.tab = tab;
-
     this.movieService.getMovies(tab, page).subscribe(
       (data: MovieResults) => {
-        this.results = data;
-        this.movies = this.results.results;
-        console.log('here', this.movies);
+        this.updateResults(data);
       },
       (error) => {
-        this.erro = error;
-        console.error('Error: ', error);
+        this.updateError(error);
       }
     );
   }
 
   getSearchMovies() {
-    this.tab = 'search';
-
     if (this.searchTerm) {
       this.movieService.searchMovie(this.searchTerm).subscribe(
         (data: MovieResults) => {
-          this.results = data;
-          this.movies = this.results.results;
-          console.log('here', this.movies);
+          this.updateResults(data);
         },
         (error) => {
-          this.erro = error;
-          console.error('Error: ', error);
+          this.updateError(error);
         }
       );
     }
+  }
+
+  openMovieDetails(movieId: number) {
+    this.router.navigate(['/movie-details', movieId]);
+  }
+
+  private updateResults(data: MovieResults) {
+    this.results = data;
+    this.movies = this.results.results;
+    console.log('here', this.movies);
+  }
+
+  private updateError(error: any) {
+    this.erro = error;
+    console.error('Error: ', error);
   }
 }

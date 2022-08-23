@@ -1,4 +1,8 @@
-<div class="movie-card" *ngFor="let movie of movies">
+<div
+  class="movie-card"
+  *ngFor="let movie of movies"
+  (click)="selectMovie(movie.id)"
+>
   <figure class="movie-card__image">
     <img [attr.src]="imageUrl + movie.poster_path" alt="{{ movie.title }}" />
   </figure>
