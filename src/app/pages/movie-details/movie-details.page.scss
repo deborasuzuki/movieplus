@@ -1,11 +1,13 @@
 .details {
   &__main {
+    width: 100vw;
   }
 
   &__head {
     height: auto;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100vw;
 
     @media (min-width: 769px) {
       height: 600px;
@@ -56,6 +58,7 @@
     &__info {
       color: #fff;
       padding: 20px;
+      max-width: 100vw;
 
       div {
         display: flex;
@@ -80,8 +83,10 @@
       }
 
       &__genres {
+        max-width: 100vw;
         font-weight: 300;
         margin-bottom: 10px;
+        flex-wrap: wrap;
 
         #date {
           margin-right: 15px;
