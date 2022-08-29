@@ -4,7 +4,11 @@
     <div *ngFor="let movie of movieRecommendations" class="cast__card">
       <figure class="cast__card__image">
         <img
-          [attr.src]="imageUrl + movie.poster_path"
+          [attr.src]="
+            movie.poster_path
+              ? imageUrl + movie.poster_path
+              : '../../../assets/images/generic_profile.png'
+          "
           alt="{{ movie.title }}"
         />
       </figure>

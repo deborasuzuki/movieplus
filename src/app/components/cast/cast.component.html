@@ -4,7 +4,11 @@
     <div *ngFor="let actor of showCast" class="cast__card">
       <figure class="cast__card__image">
         <img
-          [attr.src]="imageUrl + actor.profile_path"
+          [attr.src]="
+            actor.profile_path
+              ? imageUrl + actor.profile_path
+              : '../../../assets/images/generic_profile.png'
+          "
           alt="{{ actor.name }}"
         />
       </figure>

@@ -92,7 +92,7 @@ export class MovieDetailsComponent implements OnInit {
     this.movieCast = this.movieCredits.cast.filter(
       (item) => item.known_for_department == 'Acting'
     );
-    this.showCast = this.movieCast.slice(0, 8);
+    this.showCast = this.movieCast.slice(0, 10);
     this.loaderCredits = false;
   }
 
